@@ -25,9 +25,9 @@ const HeroSection = () => {
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
         <div className="max-w-5xl">
           {/* Pre-headline */}
-          <p className="animate-fade-up mb-6 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary opacity-0 delay-100">
+          {/* <p className="animate-fade-up mb-6 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary opacity-0 delay-100">
             Invitation Only
-          </p>
+          </p> */}
 
           {/* Main Headline */}
           <h1 className="animate-fade-up headline-display mb-8 text-foreground opacity-0 delay-200">
@@ -61,9 +61,9 @@ const HeroSection = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-scroll-indicator">
+        {/* <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-scroll-indicator">
           <ChevronDown className="h-8 w-8 text-foreground/40" />
-        </div>
+        </div> */}
       </div>
     </section>
   );
