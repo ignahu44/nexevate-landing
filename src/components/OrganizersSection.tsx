@@ -95,7 +95,7 @@ const OrganizersSection = () => {
 
       {/* Horizontal Scroll Container */}
       <div className="relative">
-        <div className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-8 scrollbar-hide snap-x snap-mandatory">
+        <div className="flex gap-10 overflow-x-auto pb-8 px-2 md:px-8 scrollbar-hide snap-x snap-mandatory">
           <div className="flex-shrink-0 w-[calc((100vw-1280px)/2+2rem)] hidden 2xl:block" />
           {organizers.map((organizer, index) => (
             <div key={index} className="snap-start">
@@ -107,11 +107,12 @@ const OrganizersSection = () => {
       </div>
 
       {/* Scroll Hint */}
-      <div className="container-narrow mt-8">
-        <p className="font-sans text-xs text-muted-foreground text-center md:text-left">
+      
+      {/* <div className="container-narrow mt-8"> */}
+        {/* <p className="font-sans text-xs text-muted-foreground text-center md:text-left">
           ← Scroll to explore →
-        </p>
-      </div>
+        </p> */}
+      {/* </div> */}
     </section>
   );
 };

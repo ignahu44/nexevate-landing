@@ -29,25 +29,27 @@ const SparkSection = () => {
             <h3 className="mb-6 font-serif text-2xl md:text-3xl font-medium text-foreground">
               Raw Truth
             </h3>
+
+            <div className="divider-line mb-6" />
             
             <div className="space-y-4">
-              <p className="body-editorial">
+              {/* <p className="body-editorial">
                 Un-googleable insights from the architects of industry. Our panelists—VCs, 
                 founders who've exited, and operators who've scaled—share the failures 
                 they don't post about.
-              </p>
+              </p> */}
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="body-editorial">Unfiltered founder post-mortems</span>
+                  <span className="body-editorial">Un-Googleable insights from industry architects</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="body-editorial">VC perspectives behind closed doors</span>
+                  <span className="body-editorial">Unfiltered perspectives on emerging opportunities</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="body-editorial">Industry titan war stories</span>
+                  <span className="body-editorial">Strategic foresight from those shaping the future</span>
                 </li>
               </ul>
             </div>
@@ -65,25 +67,27 @@ const SparkSection = () => {
             <h3 className="mb-6 font-serif text-2xl md:text-3xl font-medium text-foreground">
               3D Stacking
             </h3>
+
+            <div className="divider-line mb-6" />
             
             <div className="space-y-4">
-              <p className="body-editorial">
+              {/* <p className="body-editorial">
                 Curated cross-industry connection. Every attendee is vetted, every 
                 introduction intentional. This is where vertical expertise meets 
                 horizontal opportunity.
-              </p>
+              </p> */}
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="body-editorial">Cross-industry pollination</span>
+                  <span className="body-editorial">Panelists, VCs, and industry titans in the room</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="body-editorial">Facilitated high-value introductions</span>
+                  <span className="body-editorial">Curated attendees across Tech, Retail, Real Estate & Finance</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="body-editorial">Deep-dive breakout discussions</span>
+                  <span className="body-editorial">Vertical expansion meets horizontal growth</span>
                 </li>
               </ul>
             </div>

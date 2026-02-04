@@ -134,6 +134,10 @@
     @apply text-3xl md:text-4xl lg:text-5xl font-serif font-semibold leading-[1.15] tracking-tight;
   }
 
+  .divider-line {
+    @apply w-16 h-px bg-gradient-to-r from-transparent via-[hsl(var(--gold))] to-transparent;
+  }
+
   .body-large {
     @apply text-lg md:text-xl font-sans font-light leading-relaxed text-muted-foreground;
   }
@@ -141,7 +145,18 @@
   .body-editorial {
     @apply text-base md:text-lg font-sans font-light leading-[1.8] text-muted-foreground;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
 }
+/**/
 
 @layer utilities {
   .animate-fade-up {
@@ -166,6 +181,14 @@
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
   .delay-600 { animation-delay: 600ms; }
+
+  .slider-track {
+    animation: slide 30s linear infinite;
+  }
+
+  .pause-on-hover:hover .slider-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes fadeUp {
@@ -203,3 +226,12 @@
     transform: translateY(10px);
   }
 }
+
+@keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
