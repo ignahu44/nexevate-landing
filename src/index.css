@@ -55,6 +55,8 @@
     --sidebar-accent-foreground: 40 20% 92%;
     --sidebar-border: 0 0% 18%;
     --sidebar-ring: 38 60% 50%;
+
+    --gradient-reveal: linear-gradient(0deg, hsla(0, 0%, 0%, 0.95) 0%, hsla(0, 0%, 0%, 0.8) 100%);
   }
 
   .dark {
@@ -154,6 +156,22 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
+  }
+
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
+  }
+
+  /* Card hover overlay */
+  .card-overlay {
+    @apply absolute inset-0 transition-transform duration-700 ease-out;
+    background: var(--gradient-reveal);
+    transform: translateY(100%);
+  }
+  
+  .group:hover .card-overlay {
+    transform: translateY(0);
   }
 
 }
