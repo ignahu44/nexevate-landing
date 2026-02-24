@@ -103,21 +103,8 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      {/* <button 
-        onClick={scrollToNext}
-        className={`absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 transition-all duration-1000 group ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{ transitionDelay: '1.5s' }}
-        aria-label="Scroll to next section"
-      >
-        <span className="text-xs tracking-ultra uppercase text-cream-muted">Discover</span>
-        <ChevronDown className="w-5 h-5 text-gold animate-float" />
-      </button> */}
     </section>
   );
 };
 
 export default HeroSection;
-

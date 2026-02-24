@@ -115,9 +115,20 @@
 
 @layer components {
   /* Hero button variant */
-  .btn-hero {
+  /* .btn-hero {
     @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-widest uppercase transition-all duration-500;
     background: hsl(var(--gold));
+    color: hsl(var(--obsidian));
+    letter-spacing: 0.2em;
+  } */
+
+  .btn-hero {
+   @apply inline-flex items-center justify-center
+         px-8 py-4 text-sm font-medium
+         tracking-widest uppercase
+         transition-all duration-500
+         bg-gradient-to-r from-[#eecb7a] to-[#cb9441];
+
     color: hsl(var(--obsidian));
     letter-spacing: 0.2em;
   }
