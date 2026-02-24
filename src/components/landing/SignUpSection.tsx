@@ -77,28 +77,6 @@ const SignUpSection = () => {
             All applications are reviewed. Admission is by invitation only.
           </p>
 
-          {/* <form 
-            onSubmit={handleSubmit}
-            className={`max-w-xl mx-auto reveal reveal-delay-3 ${isVisible ? 'visible' : ''}`}
-          >
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="flex-1 px-6 py-4 bg-card border border-border text-cream placeholder:text-muted-foreground focus:border-gold focus:outline-none transition-colors duration-300 font-body"
-              />
-              <button type="submit" className="btn-hero whitespace-nowrap">
-                Request Access
-              </button>
-            </div>
-            <p className="text-xs text-muted-foreground mt-4">
-              Be the first to know when the next door opens.
-            </p>
-          </form> */}
-
         </div>
       </div>
     </section>

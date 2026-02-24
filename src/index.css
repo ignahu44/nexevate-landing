@@ -140,8 +140,7 @@
   /* Register Button */
 
   .btn-registration {
-    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium mb-4 uppercase transition-all duration-500;
-    background: hsl(var(--gold));
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium mb-4 uppercase transition-all duration-500 bg-gradient-to-r from-[#eecb7a] to-[#cb9441];
     color: hsl(var(--obsidian));
     letter-spacing: 0.1em;
   }
@@ -181,7 +180,8 @@
   
   /* Text gradients */
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(var(--gold-light)), hsl(var(--gold)), hsl(var(--gold-dark)));
+    @apply bg-gradient-to-r from-[#eecb7a] to-[#cb9441];
+    /* background: linear-gradient(135deg, hsl(var(--gold-light)), hsl(var(--gold)), hsl(var(--gold-dark))); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

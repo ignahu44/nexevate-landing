@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 
@@ -64,9 +63,7 @@ const { ref, isVisible } = useScrollReveal(0.2);
           </p>
 
           {/* CTA */}
-          <Button className="btn-hero">
-            Sign Up — Be the First to Know When the Next Door Opens
-          </Button>
+          <Button className="btn-hero"> Sign Up — Be the First to Know When the Next Door Opens </Button>
           {/* <Button variant="gold" size="xl" className="mb-8">
             Sign Up — Be the First to Know When the Next Door Opens
           </Button> */}
