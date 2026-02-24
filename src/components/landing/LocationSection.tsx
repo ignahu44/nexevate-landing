@@ -53,10 +53,8 @@ const LocationSection = () => {
               Upper East Side, New York City
             </p>
 
-            {/* <Button variant="heroOutline" size="lg">
-              View on Map
-            </Button> */}
-            <Button className="bg-transparent text-foreground font-sans font-medium tracking-wide uppercase text-xs md:text-sm border border-foreground/30 hover:shadow-[0_0_40px_rgba(196,160,80,0.4)]"> View on Map </Button>
+            <Button className="bg-transparent text-foreground font-sans font-medium tracking-wide uppercase text-xs md:text-sm border border-foreground/30 hover:shadow-[0_0_40px_rgba(236,189,0,0.4)]"> View on Map </Button>
+          
           </div>
         </div>
       </div>
