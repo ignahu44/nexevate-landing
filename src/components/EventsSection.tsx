@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
-import { MapPin, Calendar, Building2 } from "lucide-react";
+import { MapPin, Calendar } from "lucide-react";
 import venueBg from "@/assets/venue-bg.jpg";
 import organizer2 from "@/assets/organizer-2.jpg";
 import organizer3 from "@/assets/organizer-3.jpg";
@@ -55,139 +56,148 @@ const upcomingEvents: EventData[] = [
 
 const EventsSection = () => {
   const { ref, isVisible } = useScrollReveal(0.1);
-  const [featuredIndex, setFeaturedIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const featured = upcomingEvents[featuredIndex];
-  const secondary = upcomingEvents.filter((_, i) => i !== featuredIndex);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "center",
+    loop: true,
+    skipSnaps: false,
+    startIndex: 0,
+  });
 
-  const handleSelectEvent = useCallback(
-    (index: number) => {
-      if (index === featuredIndex || isTransitioning) return;
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setFeaturedIndex(index);
-        setTimeout(() => setIsTransitioning(false), 50);
-      }, 300);
-    },
-    [featuredIndex, isTransitioning]
-  );
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setActiveIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   return (
     <section ref={ref} className="relative w-full overflow-hidden section-padding">
-      {/* Background Image */}
+      {/* Section Header */}
       <div
-        className={`absolute inset-0 z-0 transition-opacity duration-700 ${
-          isTransitioning ? "opacity-0" : "opacity-100"
+        className={`container-narrow mb-12 md:mb-16 transition-all duration-700 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <img
-          src={featured.image}
-          alt={featured.name}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
-        <div className="absolute inset-0 bg-background/50" />
+        <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
+          Upcoming Events
+        </p>
+        <h2 className="headline-section text-foreground">Where We Convene</h2>
+        <div className="divider-line mt-6" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container-narrow">
-        {/* Featured Event */}
-        <div className="max-w-xl mb-16 lg:mb-20">
-          <div
-            className={`transition-all duration-700 ${
-              isVisible && !isTransitioning
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
-          >
-            <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
-              {featured.label}
-            </p>
-            <h2 className="headline-section text-foreground mb-6">
-              {featured.name}
-            </h2>
-            <div className="divider-line mb-8" />
-          </div>
+      {/* Stacked Carousel */}
+      <div
+        className={`transition-all duration-700 delay-200 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {upcomingEvents.map((event, index) => {
+              const isActive = index === activeIndex;
 
-          <div
-            className={`transition-all duration-700 delay-200 ${
-              isVisible && !isTransitioning
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
-          >
-            <p className="body-editorial mb-8">{featured.description}</p>
-
-            <div className="flex flex-col gap-3 mb-8">
-              <p className="font-sans text-sm text-muted-foreground flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-primary" />
-                {featured.date}
-              </p>
-              <p className="font-sans text-sm text-muted-foreground flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary" />
-                {featured.city}
-              </p>
-              <p className="font-sans text-sm text-muted-foreground flex items-center gap-2">
-                <Building2 className="h-4 w-4 text-primary" />
-                {featured.venue}
-              </p>
-            </div>
-
-            <Button variant="heroOutline" size="lg">
-              View Details
-            </Button>
-          </div>
-        </div>
-
-        {/* Secondary Events */}
-        <div
-          className={`transition-all duration-700 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
-          <p className="mb-6 font-sans text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">
-            More Events
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {secondary.map((event) => {
-              const originalIndex = upcomingEvents.findIndex(
-                (e) => e.id === event.id
-              );
               return (
-                <button
+                <div
                   key={event.id}
-                  onClick={() => handleSelectEvent(originalIndex)}
-                  className="group relative overflow-hidden rounded-sm border border-border/30 bg-card/60 backdrop-blur-sm text-left transition-all duration-500 hover:border-primary/30 hover:bg-card/80 focus:outline-none focus:ring-1 focus:ring-primary/40"
+                  className="relative flex-[0_0_80%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_55%] min-w-0 px-2 md:px-3 transition-all duration-500 ease-out"
+                  style={{
+                    transform: isActive ? "scale(1)" : "scale(0.88)",
+                    opacity: isActive ? 1 : 0.45,
+                    filter: isActive ? "none" : "brightness(0.7)",
+                  }}
                 >
-                  <div className="flex gap-4 p-4">
-                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-sm">
-                      <img
-                        src={event.image}
-                        alt={event.name}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-background/30" />
-                    </div>
-                    <div className="flex flex-col justify-center min-w-0">
-                      <h3 className="font-serif text-base font-semibold text-foreground mb-1 truncate">
+                  {/* Card */}
+                  <div className="relative aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/10] overflow-hidden rounded-sm">
+                    {/* Background Image */}
+                    <img
+                      src={event.image}
+                      alt={event.name}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    {/* Dark Overlay */}
+                    <div className="absolute inset-0 bg-background/70" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+
+                    {/* Content */}
+                    <div className="relative z-10 flex h-full flex-col justify-end p-6 md:p-10 lg:p-12">
+                      <p className="mb-3 font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-primary">
+                        {event.label}
+                      </p>
+                      <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground leading-tight mb-3">
                         {event.name}
                       </h3>
-                      <p className="font-sans text-xs text-muted-foreground mb-0.5">
-                        {event.date}
-                      </p>
-                      <p className="font-sans text-xs text-muted-foreground flex items-center gap-1">
-                        <MapPin className="h-3 w-3 text-primary/70" />
-                        {event.city}
-                      </p>
+
+                      {/* Description – only visible on active slide */}
+                      <div
+                        className="overflow-hidden transition-all duration-500"
+                        style={{
+                          maxHeight: isActive ? "80px" : "0px",
+                          opacity: isActive ? 1 : 0,
+                        }}
+                      >
+                        <p className="body-editorial line-clamp-2 mb-4">
+                          {event.description}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
+                          <Calendar className="h-3.5 w-3.5 text-primary" />
+                          {event.date}
+                        </span>
+                        <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
+                          <MapPin className="h-3.5 w-3.5 text-primary" />
+                          {event.city}
+                        </span>
+                      </div>
+
+                      {/* CTA – only on active slide */}
+                      <div
+                        className="transition-all duration-500"
+                        style={{
+                          opacity: isActive ? 1 : 0,
+                          transform: isActive ? "translateY(0)" : "translateY(8px)",
+                          pointerEvents: isActive ? "auto" : "none",
+                        }}
+                      >
+                        <Button variant="heroOutline" size="lg">
+                          View Details
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </button>
+                </div>
               );
             })}
           </div>
+        </div>
+
+        {/* Dot Indicators */}
+        <div className="flex justify-center gap-2 mt-8">
+          {upcomingEvents.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`h-1.5 rounded-full transition-all duration-400 ${
+                index === activeIndex
+                  ? "w-8 bg-primary"
+                  : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              }`}
+              aria-label={`Go to event ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
