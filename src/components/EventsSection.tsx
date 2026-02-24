@@ -59,10 +59,11 @@ const EventsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "center",
+    align: "start",
     loop: true,
     skipSnaps: false,
     startIndex: 0,
+    containScroll: false,
   });
 
   const onSelect = useCallback(() => {
@@ -82,24 +83,11 @@ const EventsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section ref={ref} className="relative w-full overflow-hidden section-padding">
-      {/* Section Header */}
+    <section ref={ref} className="relative w-full overflow-hidden">
+      {/* Full-width cinematic carousel */}
       <div
-        className={`container-narrow mb-12 md:mb-16 transition-all duration-700 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
-      >
-        <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
-          Upcoming Events
-        </p>
-        <h2 className="headline-section text-foreground">Where We Convene</h2>
-        <div className="divider-line mt-6" />
-      </div>
-
-      {/* Stacked Carousel */}
-      <div
-        className={`transition-all duration-700 delay-200 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`transition-all duration-700 ${
+          isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
         <div className="overflow-hidden" ref={emblaRef}>
@@ -110,15 +98,14 @@ const EventsSection = () => {
               return (
                 <div
                   key={event.id}
-                  className="relative flex-[0_0_80%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_55%] min-w-0 px-2 md:px-3 transition-all duration-500 ease-out"
+                  className="relative flex-[0_0_90%] md:flex-[0_0_85%] lg:flex-[0_0_80%] min-w-0 transition-all duration-600 ease-out"
                   style={{
-                    transform: isActive ? "scale(1)" : "scale(0.88)",
-                    opacity: isActive ? 1 : 0.45,
-                    filter: isActive ? "none" : "brightness(0.7)",
+                    transform: isActive ? "scale(1)" : "scale(0.95)",
+                    opacity: isActive ? 1 : 0.4,
                   }}
                 >
-                  {/* Card */}
-                  <div className="relative aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/10] overflow-hidden rounded-sm">
+                  {/* Full cinematic slide */}
+                  <div className="relative w-full min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] overflow-hidden">
                     {/* Background Image */}
                     <img
                       src={event.image}
@@ -126,49 +113,51 @@ const EventsSection = () => {
                       className="absolute inset-0 h-full w-full object-cover"
                       loading="lazy"
                     />
-                    {/* Dark Overlay */}
-                    <div className="absolute inset-0 bg-background/70" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                    {/* Dark Overlays */}
+                    <div className="absolute inset-0 bg-background/65" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-background/20" />
+                    <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background/60 to-transparent" />
+                    <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background/60 to-transparent" />
 
                     {/* Content */}
-                    <div className="relative z-10 flex h-full flex-col justify-end p-6 md:p-10 lg:p-12">
-                      <p className="mb-3 font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-primary">
+                    <div className="relative z-10 flex h-full min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] flex-col justify-end container-narrow pb-16 md:pb-24 lg:pb-32">
+                      <p className="mb-4 font-sans text-[10px] md:text-xs font-medium uppercase tracking-[0.3em] text-primary">
                         {event.label}
                       </p>
-                      <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground leading-tight mb-3">
+                      <h3 className="font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground leading-[1.1] mb-4 md:mb-6">
                         {event.name}
                       </h3>
 
-                      {/* Description – only visible on active slide */}
+                      {/* Description – active slide only */}
                       <div
                         className="overflow-hidden transition-all duration-500"
                         style={{
-                          maxHeight: isActive ? "80px" : "0px",
+                          maxHeight: isActive ? "100px" : "0px",
                           opacity: isActive ? 1 : 0,
                         }}
                       >
-                        <p className="body-editorial line-clamp-2 mb-4">
+                        <p className="body-editorial line-clamp-2 max-w-2xl mb-6">
                           {event.description}
                         </p>
                       </div>
 
-                      <div className="flex items-center gap-4 mb-4">
-                        <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
-                          <Calendar className="h-3.5 w-3.5 text-primary" />
+                      <div className="flex items-center gap-5 mb-6 md:mb-8">
+                        <span className="font-sans text-xs md:text-sm text-muted-foreground flex items-center gap-2">
+                          <Calendar className="h-4 w-4 text-primary" />
                           {event.date}
                         </span>
-                        <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
-                          <MapPin className="h-3.5 w-3.5 text-primary" />
-                          {event.city}
+                        <span className="font-sans text-xs md:text-sm text-muted-foreground flex items-center gap-2">
+                          <MapPin className="h-4 w-4 text-primary" />
+                          {event.city} · {event.venue}
                         </span>
                       </div>
 
-                      {/* CTA – only on active slide */}
+                      {/* CTA – active only */}
                       <div
                         className="transition-all duration-500"
                         style={{
                           opacity: isActive ? 1 : 0,
-                          transform: isActive ? "translateY(0)" : "translateY(8px)",
+                          transform: isActive ? "translateY(0)" : "translateY(12px)",
                           pointerEvents: isActive ? "auto" : "none",
                         }}
                       >
@@ -185,14 +174,14 @@ const EventsSection = () => {
         </div>
 
         {/* Dot Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2.5 mt-8 md:mt-12 pb-16 md:pb-24">
           {upcomingEvents.map((_, index) => (
             <button
               key={index}
               onClick={() => emblaApi?.scrollTo(index)}
               className={`h-1.5 rounded-full transition-all duration-400 ${
                 index === activeIndex
-                  ? "w-8 bg-primary"
+                  ? "w-10 bg-primary"
                   : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
               }`}
               aria-label={`Go to event ${index + 1}`}
