@@ -16,13 +16,13 @@ const Index = () => {
     <main className="bg-background">
       <HeroSection />
       {/* <PartnersSection /> */}
-      <PartnersCardsSection/>
+      <PartnersCardsSection />
       <AboutSection />
       <ProtocolSection />
       <SparkSection />
       <OrganizersSection />
-      <PortfolioSection/>
-      <LocationSection/>
+      <PortfolioSection />
+      <LocationSection />
       <SupportSection />
       <SignUpSection />
       <Footer />
