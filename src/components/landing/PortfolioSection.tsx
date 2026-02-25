@@ -43,7 +43,7 @@ const PortfolioSection = () => {
       : portfolioItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section ref={ref} className="section-padding bg-background">
+    <section id="portfolio" ref={ref} className="section-padding bg-background">
       <div className="container-narrow">
         {/* Header */}
         <div

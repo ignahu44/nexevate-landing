@@ -15,7 +15,7 @@ const HeroSection = () => {
   // };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section id="hero" className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
 
         <div className="absolute inset-0 z-0">

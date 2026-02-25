@@ -4,7 +4,7 @@ const SparkSection = () => {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="relative py-32 md:py-40 bg-background">
+    <section id="format" className="relative py-32 md:py-40 bg-background">
       <div className="section-container">
         {/* Section Header */}
         <div ref={ref} className="text-center mb-20">

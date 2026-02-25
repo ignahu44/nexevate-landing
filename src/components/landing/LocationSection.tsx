@@ -7,7 +7,7 @@ const LocationSection = () => {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section ref={ref} className="relative w-full overflow-hidden section-padding">
+    <section id="events" ref={ref} className="relative w-full overflow-hidden section-padding">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img

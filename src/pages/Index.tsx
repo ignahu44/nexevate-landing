@@ -10,23 +10,27 @@ import PortfolioSection from '@/components/landing/PortfolioSection';
 import LocationSection from '@/components/landing/LocationSection';
 import PartnersSection from '@/components/landing/PartnersSection';
 import PartnersCardsSection from '@/components/landing/PartnersCardsSection';
+import Navbar from '@/components/NavBar';
 
 const Index = () => {
   return (
-    <main className="bg-background">
-      <HeroSection />
-      {/* <PartnersSection /> */}
-      <PartnersCardsSection />
-      <AboutSection />
-      <ProtocolSection />
-      <SparkSection />
-      <OrganizersSection />
-      <PortfolioSection />
-      <LocationSection />
-      <SupportSection />
-      <SignUpSection />
-      <Footer />
-    </main>
+    <>
+      <Navbar />
+      <main className="bg-background">
+        <HeroSection />
+        {/* <PartnersSection /> */}
+        <PartnersCardsSection />
+        <AboutSection />
+        <ProtocolSection />
+        <SparkSection />
+        <OrganizersSection />
+        <PortfolioSection />
+        <LocationSection />
+        <SupportSection />
+        <SignUpSection />
+        <Footer />
+      </main>
+    </>
   );
 };
 

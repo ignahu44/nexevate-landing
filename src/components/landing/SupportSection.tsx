@@ -5,7 +5,7 @@ const SupportSection = () => {
   const { ref, isVisible } = useScrollReveal(0.2);
 
   return (
-    <section className="relative py-32 md:py-40 bg-charcoal">
+    <section id="support" className="relative py-32 md:py-40 bg-charcoal">
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border" />
 

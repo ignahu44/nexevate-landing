@@ -16,7 +16,7 @@ const SignUpSection = () => {
   // };
 
   return (
-    <section className="relative py-32 md:py-48 bg-background overflow-hidden">
+    <section id="signup" className="relative py-32 md:py-48 bg-background overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 border border-gold/20 rotate-45" />

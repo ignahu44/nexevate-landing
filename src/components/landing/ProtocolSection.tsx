@@ -4,7 +4,7 @@ const ProtocolSection = () => {
   const { ref, isVisible } = useScrollReveal(0.2);
 
   return (
-    <section className="relative py-32 md:py-40 bg-charcoal">
+    <section id="rule" className="relative py-32 md:py-40 bg-charcoal">
       {/* Top border line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border" />
       
