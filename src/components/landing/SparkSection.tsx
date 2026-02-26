@@ -8,7 +8,7 @@ const SparkSection = () => {
       <div className="section-container">
         {/* Section Header */}
         <div ref={ref} className="text-center mb-20">
-          <p className={`text-xs tracking-ultra uppercase text-cream mb-6 reveal ${isVisible ? 'visible' : ''}`}>
+          <p className={`text-xs tracking-ultra uppercase text-cream-muted mb-6 reveal ${isVisible ? 'visible' : ''}`}>
             The Format
           </p>
           <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-medium text-gradient-gold reveal reveal-delay-1 ${isVisible ? 'visible' : ''}`}>
