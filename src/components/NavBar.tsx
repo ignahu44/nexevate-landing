@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import nexevatelogo from "@/assets/nexavate_logo.png";
+import nexevatelogo from "@/assets/nexevate_logo_primary.png";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true);

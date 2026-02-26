@@ -1,6 +1,6 @@
 // SplashScreen.tsx
 import { useEffect } from "react";
-import nexevateLogo from "@/assets/nexavate_logo.png";
+import nexevateLogo from "@/assets/nexevate_logo_plain.png";
 
 interface Props {
   onFinish: () => void;

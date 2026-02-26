@@ -9,10 +9,6 @@ const HeroSection = () => {
     setIsLoaded(true);
   }, []);
 
-  // const scrollToNext = () => {
-  //   const aboutSection = document.getElementById('about');
-  //   aboutSection?.scrollIntoView({ behavior: 'smooth' });
-  // };
 
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
