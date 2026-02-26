@@ -14,7 +14,7 @@ const SupportSection = () => {
           {/* Support Block */}
           <div className={`relative p-10 lg:p-14 bg-background border border-border reveal flex flex-col ${isVisible ? 'visible' : ''}`}>
             <div className="mb-8">
-              <Shield className="w-10 h-10 text-gold stroke-[1.5]" />
+              <Shield className="w-10 h-10 text-[#EDCB7A] stroke-[1.5]" />
             </div>
             
             <h3 className="font-display text-2xl md:text-3xl text-cream mb-4">
@@ -31,13 +31,13 @@ const SupportSection = () => {
             </button>
 
             {/* Corner accent */}
-            <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-gold/30" />
+            <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-[#EDCB7A]" />
           </div>
 
           {/* Volunteer Block */}
           <div className={`relative p-10 lg:p-14 bg-background border border-border reveal flex flex-col reveal-delay-2 ${isVisible ? 'visible' : ''}`}>
             <div className="mb-8">
-              <Users className="w-10 h-10 text-gold stroke-[1.5]" />
+              <Users className="w-10 h-10 text-[#EDCB7A] stroke-[1.5]" />
             </div>
             
             <h3 className="font-display text-2xl md:text-3xl text-cream mb-4">
@@ -54,7 +54,7 @@ const SupportSection = () => {
             </button>
 
             {/* Corner accent */}
-            <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-gold/30" />
+            <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-[#EDCB7A]" />
           </div>
         </div>
       </div>

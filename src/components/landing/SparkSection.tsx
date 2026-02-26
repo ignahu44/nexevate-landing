@@ -8,10 +8,10 @@ const SparkSection = () => {
       <div className="section-container">
         {/* Section Header */}
         <div ref={ref} className="text-center mb-20">
-          <p className={`text-xs tracking-ultra uppercase text-gold mb-6 reveal ${isVisible ? 'visible' : ''}`}>
+          <p className={`text-xs tracking-ultra uppercase text-cream mb-6 reveal ${isVisible ? 'visible' : ''}`}>
             The Format
           </p>
-          <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-medium text-cream reveal reveal-delay-1 ${isVisible ? 'visible' : ''}`}>
+          <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-medium text-gradient-gold reveal reveal-delay-1 ${isVisible ? 'visible' : ''}`}>
             The Spark
           </h2>
           <p className={`font-display text-xl md:text-2xl text-cream-muted mt-4 reveal reveal-delay-2 ${isVisible ? 'visible' : ''}`}>
@@ -27,7 +27,7 @@ const SparkSection = () => {
             {/* Number badge */}
             <div className="absolute -top-6 left-8 flex items-end gap-1">
               <span className="font-display text-7xl md:text-8xl font-medium text-gold/20">60</span>
-              <p className="text-xs tracking-ultra uppercase text-gold">MIN</p>
+              <p className="text-xs tracking-ultra uppercase text-gradient-gold">MIN</p>
             </div>
             
             <div className="pt-8">
@@ -62,11 +62,11 @@ const SparkSection = () => {
             {/* Number badge */}
             <div className="absolute -top-6 left-8 flex items-end gap-2">
               <span className="font-display text-7xl md:text-8xl font-medium text-gold/20">120</span>
-              <p className="text-xs tracking-ultra uppercase text-gold">min</p>
+              <p className="text-xs tracking-ultra uppercase text-gradient-gold">min</p>
             </div>
             
             <div className="pt-8">
-              <h3 className="font-display text-2xl md:text-3xl text-cream mb-6">
+              <h3 className="font-display text-2xl md:text-3xl text-gradient-golds mb-6">
                 3D Stacking
               </h3>
               

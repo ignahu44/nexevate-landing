@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo / Brand */}
           <div className="text-center md:text-left">
-            <p className="font-display text-2xl text-cream">Nexevate</p>
+            <p className="font-display text-2xl text-gradient-gold">Nexevate</p>
             <p className="text-xs tracking-wide-custom uppercase text-muted-foreground mt-2">
               Where Expansion Begins
             </p>

@@ -34,7 +34,7 @@ const PartnersCardsSection = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-16 px-8"
       >
-        <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
+        <p className="text-[#CA9440] text-sm font-medium tracking-widest uppercase mb-4">
           Our Network
         </p>
         <h2 className="headline-md text-foreground">

@@ -51,10 +51,10 @@ const PortfolioSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
+          <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-cream">
             Portfolio
           </p>
-          <h2 className="headline-section text-foreground">
+          <h2 className="headline-section text-gradient-gold">
             Companies That Trust Us
           </h2>
           <div className="divider-line-portfolio mt-6" />

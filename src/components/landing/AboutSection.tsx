@@ -10,12 +10,12 @@ const AboutSection = () => {
           {/* Left Column - Text */}
           <div className={`reveal ${isVisible ? 'visible' : ''}`}>
             {/* Section Label */}
-            <p className="text-xs tracking-ultra uppercase text-gold mb-6">
+            <p className="text-xs tracking-ultra uppercase text-cream mb-6">
               The Philosophy
             </p>
 
             {/* Headline */}
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium text-cream mb-8 leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium text-gradient-gold mb-8 leading-tight">
               Beyond the
               <br />
               <span className="text-gradient-gold">Glass Wall</span>
@@ -61,7 +61,7 @@ const AboutSection = () => {
                 {/* Center element */}
                 <div className="absolute inset-24 bg-gradient-to-br from-gold/20 to-transparent rounded-full flex items-center justify-center">
                   <div className="text-center">
-                    <p className="font-display text-5xl md:text-6xl text-gold font-medium">50</p>
+                    <p className="font-display text-5xl md:text-6xl text-[#CA9440] font-medium">50</p>
                     <p className="text-xs tracking-ultra uppercase text-cream-muted mt-2">Select Few</p>
                   </div>
                 </div>

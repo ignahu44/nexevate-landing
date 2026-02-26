@@ -28,10 +28,10 @@ const LocationSection = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
+            <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-cream">
               Location
             </p>
-            <h2 className="headline-section-location text-foreground mb-6">
+            <h2 className="headline-section-location text-gradient-gold mb-6">
               The Apex Room
             </h2>
             <div className="divider-line mb-8" />
@@ -53,7 +53,8 @@ const LocationSection = () => {
               Upper East Side, New York City
             </p>
 
-            <Button className="bg-transparent text-foreground font-sans font-medium tracking-wide uppercase text-xs md:text-sm border border-foreground/30 hover:shadow-[0_0_40px_rgba(236,189,0,0.4)]"> View on Map </Button>
+            {/* <Button className="bg-transparent text-foreground font-sans font-medium tracking-wide uppercase text-xs md:text-sm border border-foreground/30 hover:shadow-[0_0_40px_rgba(236,189,0,0.4)]"> View on Map </Button> */}
+            <Button className="btn-hero text-foreground"> View on Map </Button>
           
           </div>
         </div>

@@ -11,12 +11,12 @@ const ProtocolSection = () => {
       <div className="section-container">
         <div ref={ref} className="max-w-4xl mx-auto text-center">
           {/* Section Label */}
-          <p className={`text-xs tracking-ultra uppercase text-gold mb-8 reveal ${isVisible ? 'visible' : ''}`}>
+          <p className={`text-xs tracking-ultra uppercase text-cream mb-8 reveal ${isVisible ? 'visible' : ''}`}>
             The Protocol
           </p>
 
           {/* Headline */}
-          <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-medium text-cream mb-12 reveal reveal-delay-1 ${isVisible ? 'visible' : ''}`}>
+          <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-medium text-gradient-gold mb-12 reveal reveal-delay-1 ${isVisible ? 'visible' : ''}`}>
             The Rule:
             <br />
             <span className="text-gradient-gold">No Business Cards</span>
@@ -28,7 +28,7 @@ const ProtocolSection = () => {
           {/* Manifesto statements */}
           <div className={`space-y-8 reveal reveal-delay-3 ${isVisible ? 'visible' : ''}`}>
             <p className="font-display text-2xl md:text-3xl text-cream leading-relaxed">
-              Business cards are <span className="text-gold">prohibited</span>.
+              Business cards are <span className="text-gradient-gold">prohibited</span>.
             </p>
             
             <p className="font-display text-2xl md:text-3xl text-cream-muted leading-relaxed">
@@ -42,11 +42,11 @@ const ProtocolSection = () => {
 
           {/* Visual separator */}
           <div className={`mt-16 flex items-center justify-center gap-4 reveal reveal-delay-4 ${isVisible ? 'visible' : ''}`}>
-            <div className="w-2 h-2 bg-gold/30 rotate-45" />
-            <div className="w-3 h-3 bg-gold/50 rotate-45" />
-            <div className="w-4 h-4 bg-gold rotate-45" />
-            <div className="w-3 h-3 bg-gold/50 rotate-45" />
-            <div className="w-2 h-2 bg-gold/30 rotate-45" />
+            <div className="w-2 h-2 bg-[#CA9440]/30 rotate-45" />
+            <div className="w-3 h-3 bg-[#CA9440]/50 rotate-45" />
+            <div className="w-4 h-4 bg-[#CA9440] rotate-45" />
+            <div className="w-3 h-3 bg-[#CA9440]/50 rotate-45" />
+            <div className="w-2 h-2 bg-[#CA9440]/30 rotate-45" />
           </div>
         </div>
       </div>

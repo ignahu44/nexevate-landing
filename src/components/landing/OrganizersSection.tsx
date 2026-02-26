@@ -62,7 +62,7 @@ const OrganizerCard = ({ organizer }: { organizer: Organizer }) => {
         className="absolute bottom-4 right-4 z-20
                    bg-charcoal/80 backdrop-blur
                    p-2 rounded-full
-                   text-gold hover:text-cream
+                   text-[#CA9440] hover:text-cream
                    transition-all duration-300
                    hover:scale-105"
       >
@@ -72,7 +72,7 @@ const OrganizerCard = ({ organizer }: { organizer: Organizer }) => {
       {/* Default Bottom Overlay (Name & Role) */}
       <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-card">
         <p className="font-display text-lg text-cream">{organizer.name}</p>
-        <p className="text-xs tracking-wide uppercase text-gold mt-1">{organizer.role}</p>
+        <p className="text-xs tracking-wide uppercase text-[#CA9440] mt-1">{organizer.role}</p>
       </div>
 
       {/* Hover Overlay with Quote */}
@@ -101,13 +101,13 @@ const OrganizersSection = () => {
       <div className="section-container">
         {/* Section Header */}
         <div ref={ref} className="text-center mb-16">
-          <p className={`text-xs tracking-ultra uppercase text-gold mb-6 reveal ${isVisible ? 'visible' : ''}`}>
+          <p className={`text-xs tracking-ultra uppercase text-cream mb-6 reveal ${isVisible ? 'visible' : ''}`}>
             The Architects
           </p>
-          <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-medium text-cream reveal reveal-delay-1 ${isVisible ? 'visible' : ''}`}>
+          <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-medium text-gradient-gold reveal reveal-delay-1 ${isVisible ? 'visible' : ''}`}>
             Organizers & Panelists
           </h2>
-          <p className={`font-body text-cream-muted mt-4 max-w-2xl mx-auto reveal reveal-delay-2 ${isVisible ? 'visible' : ''}`}>
+          <p className={`font-body text-cream mt-4 max-w-2xl mx-auto reveal reveal-delay-2 ${isVisible ? 'visible' : ''}`}>
             Industry leaders who have shaped markets and created the pathways others follow.
           </p>
         </div>
