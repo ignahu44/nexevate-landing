@@ -75,7 +75,7 @@ const PortfolioSection = () => {
                     onClick={() => setActiveCategory(cat)}
                     className={`w-full text-left px-3 py-2 font-sans text-sm transition-colors duration-300 rounded-sm ${
                       activeCategory === cat
-                        ? "text-primary font-medium"
+                        ? "text-[#CA9440] font-medium"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >

@@ -83,7 +83,7 @@ const OrganizerCard = ({ organizer }: { organizer: Organizer }) => {
             "{organizer.quote}"
           </p>
           <div className="w-8 h-px bg-gold mx-auto mt-6" />
-          <p className="text-xs tracking-ultra uppercase text-gold mt-6">{organizer.name}</p>
+          <p className="text-xs tracking-ultra uppercase text-[#CA9440] mt-6">{organizer.name}</p>
         </div>
       </div>
     </div>

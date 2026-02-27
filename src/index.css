@@ -212,7 +212,7 @@
   
   /* Divider line */
   .divider-line {
-    @apply w-16 h-px bg-gradient-to-r from-transparent via-[hsl(var(--gold))] to-transparent;
+    @apply w-16 h-px bg-gradient-to-r from-transparent via-[#EDCB7A] to-transparent;
   }
   
   /* Text gradients */
