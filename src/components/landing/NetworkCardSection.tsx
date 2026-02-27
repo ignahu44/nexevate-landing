@@ -61,10 +61,7 @@ const PartnersCardsSection = () => {
         {[...partners, ...partners].map((partner, index) => (
           <div key={index} className="flex-shrink-0">
             <div
-              className="group
-                        w-48 h-28
-                        flex items-center justify-center
-                        bg-muted/20
+              className="group w-48 h-28  flex items-center justify-center bg-muted/20
                         border border-border
                         rounded-xl
                         backdrop-blur

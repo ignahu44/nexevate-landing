@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import amlogo from "@/assets/AMZN_BIG.png";
-import cologo from "@/assets/COST_BIG.png";
-import cslogo from "@/assets/CSCO.png";
-import orlogo from "@/assets/ORCL_BIG.png";
-import tslogo from "@/assets/TSLA_BIG.png";
-import wmlogo from "@/assets/WMT_BIG.png";
+import amlogo from "@/assets/png/AMZN_BIG.png";
+import cologo from "@/assets/png/COST_BIG.png";
+import cslogo from "@/assets/png/CSCO.png";
+import orlogo from "@/assets/png/ORCL_BIG.png";
+import tslogo from "@/assets/png/TSLA_BIG.png";
+import wmlogo from "@/assets/png/WMT_BIG.png";
 
 const categories = [
   "All",
