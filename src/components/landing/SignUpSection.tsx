@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 // import { useState } from 'react';
 
-const SignUpSection = () => {
+const SelectionSection = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const { ref, isVisible } = useScrollReveal(0.2);
@@ -73,7 +73,7 @@ const SignUpSection = () => {
   );
 };
 
-export default SignUpSection;
+export default SelectionSection;
 
 
 

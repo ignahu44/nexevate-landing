@@ -36,11 +36,11 @@ const events = [
     }
 ]
 
-export default function EventsShowcase() {
+export default function EventsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="w-full min-h-screen border-t border-border bg-background text-foreground">
+    <section id="events" className="w-full min-h-screen border-t border-border bg-background text-foreground">
         <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
 
     {/* LEFT SIDE */}

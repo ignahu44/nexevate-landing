@@ -1,6 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const SparkSection = () => {
+const FormatSection = () => {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
@@ -110,4 +110,4 @@ const SparkSection = () => {
   );
 };
 
-export default SparkSection;
+export default FormatSection;

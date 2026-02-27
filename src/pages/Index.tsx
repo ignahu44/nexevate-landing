@@ -1,17 +1,14 @@
+import Navbar from '@/components/NavBar';
 import HeroSection from '@/components/landing/HeroSection';
-import AboutSection from '@/components/landing/PhilosophySection';
+import PhilosophySection from '@/components/landing/PhilosophySection';
 import ProtocolSection from '@/components/landing/ProtocolSection';
-import SparkSection from '@/components/landing/SparkSection';
-import OrganizersSection from '@/components/landing/OrganizersSection';
+import FormatSection from '@/components/landing/SparkSection';
+import ArchitectsSection from '@/components/landing/OrganizersSection';
 import SupportSection from '@/components/landing/SupportSection';
-import SignUpSection from '@/components/landing/SignUpSection';
+import SelectionSection from '@/components/landing/SignUpSection';
 import Footer from '@/components/landing/Footer';
 import PortfolioSection from '@/components/landing/PortfolioSection';
-import LocationSection from '@/components/landing/LocationSection';
-// import PartnersSection from '@/components/landing/PartnersSection';
-// import PartnersCardsSection from '@/components/landing/PartnersCardsSection';
-import Navbar from '@/components/NavBar';
-import EventHighlightSection from '@/components/landing/EventSection';
+import EventsSection from '@/components/landing/EventSection';
 
 const Index = () => {
   return (
@@ -19,15 +16,14 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <AboutSection />
+        <PhilosophySection />
         <ProtocolSection />
-        <SparkSection />
-        <OrganizersSection />
+        <FormatSection />
+        <ArchitectsSection />
         <PortfolioSection />
-        {/* <LocationSection /> */}
-        <EventHighlightSection/>
+        <EventsSection/>
         <SupportSection />
-        <SignUpSection />
+        <SelectionSection />
         <Footer />
       </main>
     </>

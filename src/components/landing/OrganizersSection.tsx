@@ -90,7 +90,7 @@ const OrganizerCard = ({ organizer }: { organizer: Organizer }) => {
   );
 };
 
-const OrganizersSection = () => {
+const ArchitectsSection = () => {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
@@ -126,4 +126,4 @@ const OrganizersSection = () => {
   );
 };
 
-export default OrganizersSection;
+export default ArchitectsSection;
