@@ -9,7 +9,7 @@ import SelectionSection from '@/components/landing/SignUpSection';
 import Footer from '@/components/landing/Footer';
 import PortfolioSection from '@/components/landing/PortfolioSection';
 import EventsSection from '@/components/landing/EventSection';
-¿
+
 const Index = () => {
   return (
     <>
