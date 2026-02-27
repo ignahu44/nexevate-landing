@@ -67,6 +67,22 @@
       hsla(222, 45%, 20%, 0.7) 50%,
       hsla(226, 40%, 11%, 1) 100%
     );
+/*     
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsla(226, 40%, 11%, 0.7) ,
+      hsla(222, 35%, 18%, 0.6) 50%,
+      hsla(222, 35%, 18%, 0.6) 80%,
+      hsla(226, 40%, 11%, 1) 100%
+      ); */
+
+
+      /* --gradient-hero: linear-gradient(
+        180deg,
+        hsla(226, 40%, 11%, 0.9) 0%,
+        hsla(222, 45%, 20%, 0.7) 50%,
+        hsla(226, 40%, 11%, 1) 100%
+      ); */
 
     --gradient-card: linear-gradient(
       180deg,

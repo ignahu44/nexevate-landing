@@ -16,8 +16,8 @@ function App() {
 
   return (
     <>
-      {/* {loading && <SplashScreen onFinish={() => setLoading(false)} />} */}
-      {/* {!loading && ( */}
+      {loading && <SplashScreen onFinish={() => setLoading(false)} />}
+      {!loading && (
         <div>
           <QueryClientProvider client={queryClient}>
             <TooltipProvider>
@@ -33,7 +33,7 @@ function App() {
             </TooltipProvider>
           </QueryClientProvider>
         </div>
-      {/* )} */}
+      )}
     </>
   );
 }

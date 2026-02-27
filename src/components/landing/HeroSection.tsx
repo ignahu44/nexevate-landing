@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import heroVideo from "@/assets/hero-video.mp4";
+import PartnersCardsSection from './PartnersCardsSection';
+import { motion } from "framer-motion";
 
 
 const HeroSection = () => {
@@ -34,12 +36,8 @@ const HeroSection = () => {
         <div className="max-w-5xl">
 
           {/* Main Headline */}
-          <h1 
-            className={`font-display text-4xl md:text-6xl lg:text-7xl font-medium leading-tight text-cream mb-8 transition-all duration-1000 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '0.4s' }}
-          >
+          <h1 className={`font-display text-4xl md:text-6xl lg:text-7xl font-medium leading-tight text-cream mb-8 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} 
+            style={{ transitionDelay: '0.4s' }}>
             Information You Can't Search.
             <br />
             <span className="text-gradient-gold">A Journey You Can't Replicate.</span>
@@ -87,6 +85,10 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      
+      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.150, delay: 1.4, ease: "easeIn" }} className="absolute bottom-0 left-0 w-full z-20 pb-8">
+        <PartnersCardsSection />
+      </motion.div>
 
     </section>
   );

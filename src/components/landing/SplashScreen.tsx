@@ -1,5 +1,5 @@
 
-import nexevateLogo from "@/assets/nexevate_logo_plain.png";
+import nexevateLogo from "@/assets/logo/nexevate_logo_plain.png";
 import { useEffect, useState } from "react";
 
 interface Props {

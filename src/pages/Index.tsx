@@ -1,5 +1,5 @@
 import HeroSection from '@/components/landing/HeroSection';
-import AboutSection from '@/components/landing/AboutSection';
+import AboutSection from '@/components/landing/PhilosophySection';
 import ProtocolSection from '@/components/landing/ProtocolSection';
 import SparkSection from '@/components/landing/SparkSection';
 import OrganizersSection from '@/components/landing/OrganizersSection';
@@ -16,10 +16,8 @@ const Index = () => {
   return (
     <>
       <Navbar />
-      <main className="bg-background">
+      <main>
         <HeroSection />
-        {/* <PartnersSection /> */}
-        <PartnersCardsSection />
         <AboutSection />
         <ProtocolSection />
         <SparkSection />

@@ -1,6 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const AboutSection = () => {
+const PhilosophySection = () => {
   const { ref, isVisible } = useScrollReveal(0.2);
 
   return (
@@ -83,4 +83,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default PhilosophySection;
