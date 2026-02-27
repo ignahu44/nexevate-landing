@@ -59,9 +59,7 @@ const SignUpSection = () => {
             }`}
             style={{ transitionDelay: '1.2s' }}
           ></div>
-          <button className="btn-hero">
-            Sign Up — Be the First to Know When the Next Door Opens
-          </button>
+          <button className="btn-hero"> Be the First to Know When the Next Door Opens </button>
           {/* <button className="btn-registration hover:shadow-[0_0_40px_rgba(196,160,80,0.4)]">
             Sign Up — Be the First to Know When the Next Door Opens
           </button> */}
