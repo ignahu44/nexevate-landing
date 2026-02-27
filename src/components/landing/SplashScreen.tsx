@@ -10,7 +10,7 @@ interface Props {
       useEffect(() => {
           const timer = setTimeout(() => {
               onFinish();
-            }, 2000); // 2 segundos
+            }, 1500); // 2 segundos
         
             return () => clearTimeout(timer);
           }, [onFinish]);

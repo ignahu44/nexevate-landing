@@ -8,9 +8,10 @@ import SignUpSection from '@/components/landing/SignUpSection';
 import Footer from '@/components/landing/Footer';
 import PortfolioSection from '@/components/landing/PortfolioSection';
 import LocationSection from '@/components/landing/LocationSection';
-import PartnersSection from '@/components/landing/PartnersSection';
-import PartnersCardsSection from '@/components/landing/PartnersCardsSection';
+// import PartnersSection from '@/components/landing/PartnersSection';
+// import PartnersCardsSection from '@/components/landing/PartnersCardsSection';
 import Navbar from '@/components/NavBar';
+import EventHighlightSection from '@/components/landing/EventSection';
 
 const Index = () => {
   return (
@@ -23,7 +24,8 @@ const Index = () => {
         <SparkSection />
         <OrganizersSection />
         <PortfolioSection />
-        <LocationSection />
+        {/* <LocationSection /> */}
+        <EventHighlightSection/>
         <SupportSection />
         <SignUpSection />
         <Footer />
