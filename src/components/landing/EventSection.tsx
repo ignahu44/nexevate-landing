@@ -26,14 +26,14 @@ const events = [
       date: "April 15 · 8:00pm",
       image: warnertheatre,
       description: "It's a test event on April.",
-    },
-    {
-      title: "Festival Cultural",
-      location: "8656 Colesville Rd, Silver Spring",
-      date: "May 5 · 8:30pm",
-      image: fillmore,
-      description: "It's a test event on May",
     }
+    // {
+    //   title: "Festival Cultural",
+    //   location: "8656 Colesville Rd, Silver Spring",
+    //   date: "May 5 · 8:30pm",
+    //   image: fillmore,
+    //   description: "It's a test event on May",
+    // }
 ]
 
 export default function EventsSection() {
@@ -44,49 +44,63 @@ export default function EventsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
 
     {/* LEFT SIDE */}
-    {/* LEFT SIDE */}
 <div className="flex flex-col h-full px-8 md:px-16 py-16 border-r border-border">
 
-  {events.map((event, index) => {
-    const isActive = index === activeIndex;
+  {/* HEADER SUPERIOR */}
+  <div className="mb-12">
+    <p className="text-xs tracking-ultra uppercase text-cream mb-6"> Events </p>
 
-    return (
-      <motion.div
-        key={event.title}
-        layout
-        onClick={() => setActiveIndex(index)}
-        transition={{
-          layout: {
-            // type: "",
-            stiffness: 120,
-            damping: 20,
-          },
-        }}
-        className={`
-          border-b border-border cursor-pointer
-          flex flex-col justify-center
-          ${isActive ? "flex-1 py-10" : "flex-none py-6"}
-        `}
-      >
-        {/* TÍTULO (MISMO TAMAÑO SIEMPRE) */}
-        <h3 className="text-3xl md:text-4xl font-light">
-          {event.title}
-        </h3>
+    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium text-gradient-gold mb-8 leading-tight">
+      Check our next events
+    </h2>
+  </div>
 
-        {/* CONTENIDO EXPANDIDO */}
-        {isActive && (
-          <div className="mt-6 text-muted-foreground">
-            <p>{event.location}</p>
-            <p>{event.date}</p>
+  {/* ACORDEÓN (OCUPA EL RESTO DEL ESPACIO) */}
+  <div className="flex-1 flex flex-col">
 
-            <p className="mt-4 max-w-md">
-              {event.description}
-            </p>
+    {events.map((event, index) => {
+      const isActive = index === activeIndex;
+
+      return (
+        <motion.div
+          key={event.title}
+          layout
+          onClick={() => setActiveIndex(index)}
+          transition={{
+            layout: {
+              type: "keyframes",
+              stiffness: 90,
+              damping: 25,
+            },
+          }}
+          className={`
+            border-b border-border cursor-pointer
+            flex flex-col justify-center
+            ${isActive ? "flex-1 py-10" : "flex-none py-6"}
+          `}
+        >
+          <div>
+            <h3 className="text-2xl md:text-3xl font-light">
+            {event.title}
+          </h3>
+          <p> {event.date} </p>
           </div>
-        )}
-      </motion.div>
-    );
-  })}
+
+          {isActive && (
+            <div className="mt-6 text-muted-foreground">
+              <p>{event.location}</p>
+              <p>{event.date}</p>
+
+              <p className="mt-4 max-w-md">
+                {event.description}
+              </p>
+            </div>
+          )}
+        </motion.div>
+      );
+    })}
+
+  </div>
 
 </div>
 
@@ -131,3 +145,50 @@ export default function EventsSection() {
     </section>
   );
 }
+
+
+
+    // <div className="flex flex-col h-full px-8 md:px-16 py-16 border-r border-border">
+
+    //   {events.map((event, index) => {
+    //     const isActive = index === activeIndex;
+
+    //     return (
+    //       <motion.div
+    //         key={event.title}
+    //         layout
+    //         onClick={() => setActiveIndex(index)}
+    //         transition={{
+    //           layout: {
+    //             // type: "",
+    //             stiffness: 120,
+    //             damping: 20,
+    //           },
+    //         }}
+    //         className={`
+    //           border-b border-border cursor-pointer
+    //           flex flex-col justify-center
+    //           ${isActive ? "flex-1 py-10" : "flex-none py-6"}
+    //         `}
+    //       >
+    //         {/* TÍTULO (MISMO TAMAÑO SIEMPRE) */}
+    //         <h3 className="text-3xl md:text-4xl font-light">
+    //           {event.title}
+    //         </h3>
+
+    //         {/* CONTENIDO EXPANDIDO */}
+    //         {isActive && (
+    //           <div className="mt-6 text-muted-foreground">
+    //             <p>{event.location}</p>
+    //             <p>{event.date}</p>
+
+    //             <p className="mt-4 max-w-md">
+    //               {event.description}
+    //             </p>
+    //           </div>
+    //         )}
+    //       </motion.div>
+    //     );
+    //   })}
+
+    // </div>
