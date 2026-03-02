@@ -26,14 +26,14 @@ const events = [
       date: "April 15 · 8:00pm",
       image: warnertheatre,
       description: "It's a test event on April.",
+    },
+    {
+      title: "Festival Cultural",
+      location: "8656 Colesville Rd, Silver Spring",
+      date: "May 5 · 8:30pm",
+      image: fillmore,
+      description: "It's a test event on May",
     }
-    // {
-    //   title: "Festival Cultural",
-    //   location: "8656 Colesville Rd, Silver Spring",
-    //   date: "May 5 · 8:30pm",
-    //   image: fillmore,
-    //   description: "It's a test event on May",
-    // }
 ]
 
 export default function EventsSection() {
