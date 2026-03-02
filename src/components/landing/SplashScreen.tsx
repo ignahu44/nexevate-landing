@@ -1,132 +1,111 @@
-
 // import nexevateLogo from "@/assets/logo/nexevate_logo_plain.png";
 // import { useEffect, useState } from "react";
 
 // interface Props {
 //     onFinish: () => void;
 //   }
-  
-  // export const SplashScreen = ({ onFinish }: Props) => {
-  //     useEffect(() => {
-  //         const timer = setTimeout(() => {
-  //             onFinish();
-  //           }, 1500); // 2 segundos
-        
-  //           return () => clearTimeout(timer);
-  //         }, [onFinish]);
-        
-  //         return (
-  //             <div className="fixed inset-0 flex items-center justify-center bg-[#1D2B45]">
-  //               <img
-  //                 src={nexevateLogo}
-  //                 alt="Logo"
-  //                 className="w-40 animate-pulse"
-  //               />
-  //             </div>
-  //           );
-  //         };
 
+// export const SplashScreen = ({ onFinish }: Props) => {
+//     useEffect(() => {
+//         const timer = setTimeout(() => {
+//             onFinish();
+//           }, 1500); // 2 segundos
 
+//           return () => clearTimeout(timer);
+//         }, [onFinish]);
 
+//         return (
+//             <div className="fixed inset-0 flex items-center justify-center bg-[#1D2B45]">
+//               <img
+//                 src={nexevateLogo}
+//                 alt="Logo"
+//                 className="w-40 animate-pulse"
+//               />
+//             </div>
+//           );
+//         };
 
 // Variante 2
-
 
 // import nexevateLogo from "@/assets/logo/nexevate_logo_plain.png";
 // import { useEffect, useState } from "react";
 // interface Props {
-  //   onFinish: () => void;
-  // }
-  
-  // export const SplashScreen = ({ onFinish }: Props) => {
-    //   const [exit, setExit] = useState(false);
-    
-    //   useEffect(() => {
-      //     const timer1 = setTimeout(() => {
-        //       setExit(true);
-        //     }, 1200);
-        
-        //     const timer2 = setTimeout(() => {
-          //       onFinish();
-          //     }, 1700);
-          
-          //     return () => {
-            //       clearTimeout(timer1);
-            //       clearTimeout(timer2);
-            //     };
-            //   }, [onFinish]);
-            
-            
-            //   return (
-              //     <div
-              //       className={`fixed inset-0 flex items-center justify-center bg-gradient-hero transition-opacity duration-500 ${
-                //         exit ? "opacity-0" : "opacity-100"
-                //       }`}
-                //     >
-                //       <img
-                //         src={nexevateLogo}
-                //         alt="Logo"
-                //         className={`w-40 transition-all duration-700 ${
-                  //           exit ? "scale-125 opacity-0" : "scale-100 opacity-100"
-                  //         }`}
-                  //       />
-                  //     </div>
-                  //   );
-                  
-                  // };
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  // Variante 3 (COMO LA BCV)
-                  
-                  import nexevateLogo from "@/assets/logo/nexevate_logo_plain.png";
-                  import { useEffect, useState } from "react";
-                  
-                  interface Props {
-                      onFinish: () => void;
-                    }
-                    
-                    export const SplashScreen = ({ onFinish }: Props) => {
-                        const [animate, setAnimate] = useState(false);
-                      
-                        useEffect(() => {
-    const timer1 = setTimeout(() => {
-        setAnimate(true);
-      }, 1200); // tiempo visible antes de subir
-  
-      const timer2 = setTimeout(() => {
-          onFinish();
-        }, 2000); // cuando termina animación
+//   onFinish: () => void;
+// }
 
-        return () => {
-            clearTimeout(timer1);
-            clearTimeout(timer2);
-          };
-        }, [onFinish]);
-      
-        return (
-            <div
+// export const SplashScreen = ({ onFinish }: Props) => {
+//   const [exit, setExit] = useState(false);
+
+//   useEffect(() => {
+//     const timer1 = setTimeout(() => {
+//       setExit(true);
+//     }, 1200);
+
+//     const timer2 = setTimeout(() => {
+//       onFinish();
+//     }, 1700);
+
+//     return () => {
+//       clearTimeout(timer1);
+//       clearTimeout(timer2);
+//     };
+//   }, [onFinish]);
+
+//   return (
+//     <div
+//       className={`fixed inset-0 flex items-center justify-center bg-gradient-hero transition-opacity duration-500 ${
+//         exit ? "opacity-0" : "opacity-100"
+//       }`}
+//     >
+//       <img
+//         src={nexevateLogo}
+//         alt="Logo"
+//         className={`w-40 transition-all duration-700 ${
+//           exit ? "scale-125 opacity-0" : "scale-100 opacity-100"
+//         }`}
+//       />
+//     </div>
+//   );
+
+// };
+
+// Variante 3 (COMO LA BCV)
+
+import nexevateLogo from "@/assets/logo/nexevate_logo_plain.png";
+import { useEffect, useState } from "react";
+
+interface Props {
+  onFinish: () => void;
+}
+
+export const SplashScreen = ({ onFinish }: Props) => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setAnimate(true);
+    }, 1200); // tiempo visible antes de subir
+
+    const timer2 = setTimeout(() => {
+      onFinish();
+    }, 2000); // cuando termina animación
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, [onFinish]);
+
+  return (
+    <div
       className={`fixed inset-0 z-50 flex items-center justify-center bg-[#1D2B45]
       transition-transform duration-800 ease-in-out
       ${animate ? "-translate-y-full" : "translate-y-0"}`}
     >
-      <img
-        src={nexevateLogo}
-        alt="Logo Nexevate"
-        className="w-40"
-      />
+      <img src={nexevateLogo} alt="Logo Nexevate" className="w-40" />
     </div>
   );
 };
-
-
-
-
-
 
 // Variante 4
 
@@ -166,7 +145,7 @@
 
 //   return (
 //     <div className="fixed inset-0 flex items-center justify-center z-50 overflow-hidden">
-      
+
 //       {/* Mitad superior */}
 //       <div
 //         className={`absolute top-0 w-full h-1/2 bg-[#1D2B45]
@@ -192,9 +171,6 @@
 //     </div>
 //   );
 // };
-
-
-
 
 // import nexevateLogo from "@/assets/logo/nexevate_logo_plain.png";
 // import { useEffect, useState } from "react";
@@ -272,15 +248,6 @@
 //     </div>
 //   );
 // };
-
-
-
-
-
-
-
-
-
 
 // import { useEffect, useState } from "react";
 // import logoLeft from "@/assets/logo/nexevate-logo-left-side.png";
@@ -360,13 +327,6 @@
 //   );
 // };
 
-
-
-
-
-
-
-
 // import { useEffect, useState } from "react";
 // import logoLeft from "@/assets/logo/nexevate-logo-left-side.png";
 // import logoRight from "@/assets/logo/nexevate-logo-right-side.png";
@@ -423,7 +383,6 @@
 //           ${open ? "-translate-x-64" : "translate-x-0"}`}
 //         />
 
-
 //         {/* Logo derecho */}
 //         <img
 //           src={logoRight}
@@ -432,7 +391,6 @@
 //           ${open ? "translate-x-64" : "translate-x-0"}`}
 //         />
 
-       
 //       </div>
 //     </div>
 //   );
