@@ -113,7 +113,8 @@ export default function Navbar() {
       fixed top-0 left-0 w-full z-50 transition-all duration-300
       border-b border-white/25
       ${visible ? "translate-y-0" : "-translate-y-full"}
-      bg-[#1D2B45]/85 md: ${scrolled ? "bg-[#1D2B45]/85" : "bg-transparent"}
+      bg-[#1D2B45]/85
+    ${scrolled ? "md:bg-[#1D2B45]/85" : "md:bg-transparent"}
     `}
     >
       <div className="px-6 md:px-32 py-4 flex justify-between items-center">
