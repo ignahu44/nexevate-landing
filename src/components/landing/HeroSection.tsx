@@ -8,7 +8,7 @@ const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    setTimeout(() => {setIsLoaded(true)}, 1000);
   }, []);
 
 

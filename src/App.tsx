@@ -13,28 +13,34 @@ const queryClient = new QueryClient();
 
 function App() {
   const [loading, setLoading] = useState(true);
+  // const [showSplash, setShowSplash] = useState(true);
+
 
   return (
-    <>
-      {loading && <SplashScreen onFinish={() => setLoading(false)} />}
-      {!loading && (
-        <div>
-          <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
-              <Toaster />
-              <Sonner />
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </BrowserRouter>
-            </TooltipProvider>
-          </QueryClientProvider>
-        </div>
-      )}
-    </>
+    // <>
+    //   {loading && <SplashScreen onFinish={() => setLoading(false)} />}
+    //   {!loading && (
+        
+    //   )}
+    // </>
+
+    <div>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+     
+      {loading && ( <SplashScreen onFinish={() => setLoading(false)} /> )}
+    </div>
   );
 }
 
