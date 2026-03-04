@@ -40,7 +40,7 @@ export default function EventsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="events" className="w-full min-h-screen border-t border-border bg-background text-foreground">
+    <section id="events" className="w-full min-h-screen border-t border-border text-white overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
 
     {/* LEFT SIDE */}
@@ -147,48 +147,3 @@ export default function EventsSection() {
 }
 
 
-
-    // <div className="flex flex-col h-full px-8 md:px-16 py-16 border-r border-border">
-
-    //   {events.map((event, index) => {
-    //     const isActive = index === activeIndex;
-
-    //     return (
-    //       <motion.div
-    //         key={event.title}
-    //         layout
-    //         onClick={() => setActiveIndex(index)}
-    //         transition={{
-    //           layout: {
-    //             // type: "",
-    //             stiffness: 120,
-    //             damping: 20,
-    //           },
-    //         }}
-    //         className={`
-    //           border-b border-border cursor-pointer
-    //           flex flex-col justify-center
-    //           ${isActive ? "flex-1 py-10" : "flex-none py-6"}
-    //         `}
-    //       >
-    //         {/* TÍTULO (MISMO TAMAÑO SIEMPRE) */}
-    //         <h3 className="text-3xl md:text-4xl font-light">
-    //           {event.title}
-    //         </h3>
-
-    //         {/* CONTENIDO EXPANDIDO */}
-    //         {isActive && (
-    //           <div className="mt-6 text-muted-foreground">
-    //             <p>{event.location}</p>
-    //             <p>{event.date}</p>
-
-    //             <p className="mt-4 max-w-md">
-    //               {event.description}
-    //             </p>
-    //           </div>
-    //         )}
-    //       </motion.div>
-    //     );
-    //   })}
-
-    // </div>
