@@ -1,7 +1,13 @@
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useMemo } from "react";
+import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Calendar, MapPin, ChevronDown } from "lucide-react";
+import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import venueBg from "@/assets/venue-bg.jpg";
 import organizer2 from "@/assets/organizer-2.jpg";
 import organizer3 from "@/assets/organizer-3.jpg";
@@ -87,15 +93,110 @@ const apiEvents: EventData[] = [
   },
 ];
 
+const MAX_VISIBLE = 3;
+
+const EventCard = ({
+  event,
+  index,
+}: {
+  event: EventData;
+  index: number;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+    className="group relative overflow-hidden rounded-sm min-h-[420px] md:min-h-[460px] flex flex-col justify-end"
+  >
+    {/* Background image */}
+    <img
+      src={event.image}
+      alt={event.name}
+      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+
+    {/* Dark overlay */}
+    <div className="absolute inset-0 bg-background/60 transition-colors duration-500 group-hover:bg-background/70" />
+    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+
+    {/* Content */}
+    <div className="relative z-10 p-6 md:p-8 flex flex-col gap-4">
+      {/* Label */}
+      <p className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-primary">
+        {event.label}
+      </p>
+
+      {/* Title */}
+      <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground leading-tight">
+        {event.name}
+      </h3>
+
+      {/* Description */}
+      <p className="body-editorial text-sm leading-relaxed text-muted-foreground line-clamp-2 max-w-lg">
+        {event.description}
+      </p>
+
+      {/* Meta */}
+      <div className="flex items-center gap-5">
+        <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
+          <Calendar className="h-3.5 w-3.5 text-primary" />
+          {event.date}
+        </span>
+        <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
+          <MapPin className="h-3.5 w-3.5 text-primary" />
+          {event.city} · {event.venue}
+        </span>
+      </div>
+
+      {/* Speakers */}
+      <div className="pt-2">
+        <p className="font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-primary mb-3">
+          Speakers
+        </p>
+        <div className="flex -space-x-2">
+          {event.speakers.map((speaker, i) => (
+            <Tooltip key={speaker.id}>
+              <TooltipTrigger asChild>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.3 + i * 0.07,
+                  }}
+                  className="w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden border-2 border-background ring-1 ring-border hover:ring-primary hover:z-10 transition-all duration-300 cursor-pointer"
+                >
+                  <img
+                    src={speaker.image}
+                    alt={speaker.name}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                className="bg-popover text-popover-foreground text-xs"
+              >
+                {speaker.name}
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const EventsSection = () => {
-  const { ref, isVisible } = useScrollReveal(0.1);
+  const { ref, isVisible } = useScrollReveal(0.05);
 
   const events = useMemo(() => {
-    return [...apiEvents].sort((a, b) => a.dateSort - b.dateSort).slice(0, 3);
+    return [...apiEvents].sort((a, b) => a.dateSort - b.dateSort).slice(0, MAX_VISIBLE);
   }, []);
 
-  const [activeId, setActiveId] = useState(events[0]?.id ?? "");
-  const activeEvent = events.find((e) => e.id === activeId) ?? events[0];
+  const hasMore = apiEvents.length > MAX_VISIBLE;
 
   return (
     <section
@@ -104,161 +205,37 @@ const EventsSection = () => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
+      {/* Header */}
       <div className="container-narrow mb-12 md:mb-16">
         <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
           Upcoming Events
         </p>
-        <h2 className="headline-section text-foreground">
-          Where It Happens
-        </h2>
+        <h2 className="headline-section text-foreground">Where It Happens</h2>
       </div>
 
+      {/* Event cards grid */}
       <div className="container-narrow">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-0 min-h-[520px] md:min-h-[600px] overflow-hidden rounded-sm border border-border">
-          {/* LEFT — Accordion */}
-          <div className="flex flex-col bg-card">
-            {events.map((event) => {
-              const isOpen = event.id === activeId;
-              return (
-                <button
-                  key={event.id}
-                  onClick={() => setActiveId(event.id)}
-                  className={`w-full text-left border-b border-border transition-colors duration-300 ${
-                    isOpen ? "bg-secondary/50" : "hover:bg-secondary/30"
-                  }`}
-                >
-                  <div className="px-6 md:px-8 py-5 md:py-6">
-                    {/* Header row */}
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1 min-w-0">
-                        <p className="font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-primary mb-1">
-                          {event.label}
-                        </p>
-                        <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground leading-tight">
-                          {event.name}
-                        </h3>
-                        <div className="flex items-center gap-4 mt-2">
-                          <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
-                            <Calendar className="h-3.5 w-3.5 text-primary" />
-                            {event.date}
-                          </span>
-                        </div>
-                      </div>
-                      <ChevronDown
-                        className={`h-4 w-4 text-muted-foreground mt-1 shrink-0 transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </div>
-
-                    {/* Expanded content */}
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pt-4">
-                            <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5 mb-3">
-                              <MapPin className="h-3.5 w-3.5 text-primary" />
-                              {event.city} · {event.venue}
-                            </span>
-                            <p className="body-editorial text-sm leading-relaxed line-clamp-3">
-                              {event.description}
-                            </p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* RIGHT — Dynamic Hero */}
-          <div className="relative min-h-[400px] lg:min-h-full overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeEvent.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="absolute inset-0"
-              >
-                {/* BG Image */}
-                <img
-                  src={activeEvent.image}
-                  alt={activeEvent.name}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                {/* Overlays */}
-                <div className="absolute inset-0 bg-background/70" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
-
-                {/* Content */}
-                <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-10">
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.15 }}
-                  >
-                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-primary mb-3">
-                      {activeEvent.label}
-                    </p>
-                    <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground leading-[1.1] mb-3">
-                      {activeEvent.name}
-                    </h3>
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
-                        <Calendar className="h-3.5 w-3.5 text-primary" />
-                        {activeEvent.date}
-                      </span>
-                      <span className="font-sans text-xs text-muted-foreground flex items-center gap-1.5">
-                        <MapPin className="h-3.5 w-3.5 text-primary" />
-                        {activeEvent.city}
-                      </span>
-                    </div>
-                    <p className="body-editorial text-sm leading-relaxed max-w-md mb-8">
-                      {activeEvent.description}
-                    </p>
-
-                    {/* Speakers */}
-                    <div>
-                      <p className="font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-primary mb-4">
-                        Speakers
-                      </p>
-                      <div className="flex gap-3">
-                        {activeEvent.speakers.map((speaker, i) => (
-                          <motion.div
-                            key={speaker.id}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{
-                              duration: 0.35,
-                              delay: 0.2 + i * 0.08,
-                            }}
-                            className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-border hover:border-primary transition-colors duration-300"
-                          >
-                            <img
-                              src={speaker.image}
-                              alt={speaker.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {events.map((event, i) => (
+            <EventCard key={event.id} event={event} index={i} />
+          ))}
         </div>
+
+        {/* View More */}
+        {hasMore && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12 flex justify-center"
+          >
+            <Button variant="heroOutline" size="lg" className="gap-2">
+              View More Events
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
