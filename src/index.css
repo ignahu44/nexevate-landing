@@ -60,25 +60,27 @@
     --gold-light: 42 50% 70%;
     --gold-dark: 42 40% 45%;
 
+
+
     /* Gradients */
-    /* --gradient-hero: linear-gradient(
+    --gradient-hero: linear-gradient(
       180deg,
       hsla(226, 40%, 11%, 0.9) 0%,
       hsla(222, 45%, 20%, 0.7) 50%,
       hsla(226, 40%, 11%, 1) 100%
-    ); */
+    );
     
         
-    --gradient-hero: linear-gradient(
+    /* --gradient-hero: linear-gradient(
       180deg,
       hsla(226, 40%, 11%, 0.7) ,
       hsla(222, 35%, 18%, 0.6) 50%,
       hsla(222, 35%, 18%, 0.6) 80%,
       hsla(226, 40%, 11%, 1) 100%
-      );
+      ); */
 
-/* 
-      --gradient-hero: linear-gradient(
+
+      /* --gradient-hero: linear-gradient(
         180deg,
         hsla(226, 40%, 11%, 0.9) 0%,
         hsla(222, 45%, 20%, 0.7) 50%,
@@ -157,20 +159,13 @@
 @layer components {
   /* Hero button variant */
   
-  /* .btn-hero {
-    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-widest uppercase transition-all duration-500;
-    background: hsl(var(--gold ) / 0.5);
-    color: hsl(var(--obsidian));
-    letter-spacing: 0.2em;
-  } */
-
   .btn-hero {
    @apply inline-flex items-center justify-center
          px-8 py-4 text-sm font-medium
          tracking-widest uppercase
          transition-all duration-500
          bg-gradient-to-b from-[#EDCB7A] to-[#CA9440];
-    color: hsl(var(--obsidian));
+    color: hsl(var(--navy));
     letter-spacing: 0.2em;
   }
   
