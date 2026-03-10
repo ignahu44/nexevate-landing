@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
@@ -8,6 +8,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
+import EventApplicationModal from "@/components/EventApplicationModal";
 import venueBg from "@/assets/venue-bg.jpg";
 import organizer2 from "@/assets/organizer-2.jpg";
 import organizer3 from "@/assets/organizer-3.jpg";
@@ -36,7 +37,6 @@ interface EventData {
   speakers: Speaker[];
 }
 
-// Simulated API data — replace with real fetch
 const apiEvents: EventData[] = [
   {
     id: "evt-1",
@@ -98,9 +98,11 @@ const MAX_VISIBLE = 3;
 const EventCard = ({
   event,
   index,
+  onApply,
 }: {
   event: EventData;
   index: number;
+  onApply: (event: EventData) => void;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -185,12 +187,26 @@ const EventCard = ({
           ))}
         </div>
       </div>
+
+      {/* Apply button */}
+      <div className="pt-2">
+        <Button
+          variant="hero"
+          size="sm"
+          className="gap-2"
+          onClick={() => onApply(event)}
+        >
+          Apply to Attend
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Button>
+      </div>
     </div>
   </motion.div>
 );
 
 const EventsSection = () => {
   const { ref, isVisible } = useScrollReveal(0.05);
+  const [applyEvent, setApplyEvent] = useState<EventData | null>(null);
 
   const events = useMemo(() => {
     return [...apiEvents].sort((a, b) => a.dateSort - b.dateSort).slice(0, MAX_VISIBLE);
@@ -199,45 +215,62 @@ const EventsSection = () => {
   const hasMore = apiEvents.length > MAX_VISIBLE;
 
   return (
-    <section
-      ref={ref}
-      className={`section-padding bg-background transition-all duration-700 ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      {/* Header */}
-      <div className="container-narrow mb-12 md:mb-16">
-        <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
-          Upcoming Events
-        </p>
-        <h2 className="headline-section text-foreground">Where It Happens</h2>
-      </div>
-
-      {/* Event cards grid */}
-      <div className="container-narrow">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event, i) => (
-            <EventCard key={event.id} event={event} index={i} />
-          ))}
+    <>
+      <section
+        ref={ref}
+        className={`section-padding bg-background transition-all duration-700 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {/* Header */}
+        <div className="container-narrow mb-12 md:mb-16">
+          <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-primary">
+            Upcoming Events
+          </p>
+          <h2 className="headline-section text-foreground">Where It Happens</h2>
         </div>
 
-        {/* View More */}
-        {hasMore && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-12 flex justify-center"
-          >
-            <Button variant="heroOutline" size="lg" className="gap-2">
-              View More Events
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </motion.div>
-        )}
-      </div>
-    </section>
+        {/* Event cards grid */}
+        <div className="container-narrow">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {events.map((event, i) => (
+              <EventCard
+                key={event.id}
+                event={event}
+                index={i}
+                onApply={setApplyEvent}
+              />
+            ))}
+          </div>
+
+          {/* View More */}
+          {hasMore && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-12 flex justify-center"
+            >
+              <Button variant="heroOutline" size="lg" className="gap-2">
+                View More Events
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* Application Modal */}
+      <EventApplicationModal
+        open={!!applyEvent}
+        onOpenChange={(open) => {
+          if (!open) setApplyEvent(null);
+        }}
+        eventId={applyEvent?.id ?? ""}
+        eventName={applyEvent?.name ?? ""}
+      />
+    </>
   );
 };
 
